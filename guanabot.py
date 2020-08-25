@@ -65,7 +65,7 @@ fs_teoria=Materia('FS Teoria',4,18,0,'https://meet.google.com/gri-gvoy-gip',date
 mnt=Materia('MN Teoria',5,8,30,'https://meet.google.com/lookup/e5fl37ajgl',datetime.datetime(2020,9,5))
 
 materias=[poo,fs_practica,dinamica,teoriaDeCircuitos,mn,dinamicaP,tc,fs_teoria,mnt]
-materias.append(Materia("Materia de prueba de lunes",0,23,21,"https://twitter.com/josecarios",datetime.datetime(2020,8,24,22,10)))
+#materias.append(Materia("Materia de prueba de lunes",0,23,21,"https://twitter.com/josecarios",datetime.datetime(2020,8,24,22,10)))
 
 
 @client.event
@@ -117,7 +117,7 @@ async def hora():
         print(fechahoy)
         try:
             print( fechaD-fechahoy )
-            if(fechaD-fechahoy== datetime.timedelta(days=7) and horario.tm_hour==22 and horario.tm_min==44):
+            if(fechaD-fechahoy== datetime.timedelta(days=5) and horario.tm_hour==12 and horario.tm_min==0):
                 await channel2.send(f"El examen de {x.getNombre()} es en 5 dias beep boop")
             if(fechaD-fechahoy== datetime.timedelta(days=3) and horario.tm_hour==12 and horario.tm_min==0):
                 await channel2.send(f"El examen de {x.getNombre()} es en 3 dias beep boop")
