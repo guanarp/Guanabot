@@ -5,6 +5,7 @@ from discord.ext import commands,tasks
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 channel = os.getenv('CHANNEL')
@@ -55,13 +56,13 @@ class Materia:
 # li    
 # def nk como string nomas a cada uno al final
 poo=Materia('POO',1,14,0,'https://meet.google.com/aek-behh-hkr',datetime.datetime(2020,8,31))
-fs_practica=Materia('FS Practica',2,7,30,'https://meet.google.com/gri-gvoy-gip')
+fs_practica=Materia('FS Practica',2,7,30,'https://meet.google.com/lookup/dkfm2uyipc')
 dinamica=Materia('Dinamica Charly',2,9,0)
-teoriaDeCircuitos=Materia('Teoria de Circuitos',2,16,0,'https://meet.google.com/lookup/akks57i7ph',datetime.datetime(2020,9,8))
+teoriaDeCircuitos=Materia('Teoria de Circuitos',2,16,0,'https://meet.google.com/lookup/gzxf4kwame',datetime.datetime(2020,9,8))
 mn=Materia('MN Practica',3,13,0,'https://meet.google.com/lookup/e5fl37ajgl')
 dinamicaP=Materia('Dinamica Practica C',4,8,0,'https://meet.google.com/lookup/bgk5osrwbj',datetime.datetime(2020,8,27))
-tc=Materia('TC Practica',4,16,0,'https://meet.google.com/lookup/akks57i7ph')
-fs_teoria=Materia('FS Teoria',4,18,0,'https://meet.google.com/gri-gvoy-gip',datetime.datetime(2020,8,24))
+tc=Materia('TC Practica',4,16,0,'https://meet.google.com/lookup/gzxf4kwame')
+fs_teoria=Materia('FS Teoria',4,18,0,'https://meet.google.com/lookup/dkfm2uyipc',datetime.datetime(2020,8,24))
 mnt=Materia('MN Teoria',5,8,30,'https://meet.google.com/lookup/e5fl37ajgl',datetime.datetime(2020,9,5))
 
 materias=[poo,fs_practica,dinamica,teoriaDeCircuitos,mn,dinamicaP,tc,fs_teoria,mnt]
@@ -76,6 +77,22 @@ async def on_ready():
 @client.command()
 async def ping(ctx):
     await ctx.send(f'Pong! {round(client.latency* 1000)}ms')
+@client.command()
+async def warzone(ctx):
+    await ctx.send('Jahuga warzoneeee @Barriosp @sebas_gonzalez @enzizar')
+@client.command()
+async def wow(ctx):
+    await ctx.send('Jahugaaaa wow @enzizar @Mauricio Macri @fabioyisus')
+@client.command()
+async def avisos(ctx):
+    await ctx.send("El bot no avisa las clases de recu solo las clases comunes Beep Boop")
+    await ctx.send("Macri gato Beep Boop")
+@client.command()    
+async def macri(ctx):
+    await ctx.send("Seguis asi y comes ban del foro de avisos macri, va a empezar la guanabotdictadura")
+@client.command()
+async def disculpa(ctx):
+    await ctx.send("Lo siento vagos sigo construyendo mi casita en raspberry y mientras tanto no toy activo todo el tiempo")
 
 @tasks.loop(seconds=60)
 async def hora():
@@ -86,13 +103,13 @@ async def hora():
         hora = x.getHoras()
         #print(hora)
         mins = x.getMins()
-        if (hora - 30)<0:
+        if (mins - 30)<0:
             hora30 = hora-1
             mins30 = (mins-30)%60
         else:
             hora30 =hora
             mins30 = mins-30
-        if (hora - 5)<0:
+        if (mins - 5)<0:
             hora5 = hora-1
             mins5 = (mins-5)%60
         else:
@@ -102,19 +119,19 @@ async def hora():
         if(horario.tm_wday==x.getDia() and horario.tm_hour==x.getHoras() and horario.tm_min==x.getMins()):
             print("OK")
             #await channel.send(f"@everyone  Es hora de la clase de {x.getNombre()} beep boop, el link es {x.getLink()}")
-            await channel2.send(f"Es hora de la clase de {x.getNombre()} beep boop, el link es {x.getLink()}")
+            await channel2.send(f" @everyone Es hora de la clase de {x.getNombre()} beep boop, el link es {x.getLink()}")
         if(horario.tm_wday==x.getDia() and horario.tm_hour==hora30 and horario.tm_min== mins30):
             print("OK")
             #await channel.send(f"La clase de {x.getNombre()} comienza en 30 mins beep boop")
-            await channel2.send(f"La clase de {x.getNombre()} comienza en 30 mins beep boop")
+            await channel2.send(f"@everyone La clase de {x.getNombre()} comienza en 30 mins beep boop")
         if(horario.tm_wday==x.getDia() and horario.tm_hour==hora5 and horario.tm_min==mins5 ):
             print("OK")
             #await channel.send(f"La clase de {x.getNombre()} comienza en 5 mins beep boop")
-            await channel2.send(f"La clase de {x.getNombre()} comienza en 5 mins beep boop")
+            await channel2.send(f"@everyone La clase de {x.getNombre()} comienza en 5 mins beep boop")
         fechaD = x.getSgteExamen()
-        print(fechaD)
+        #print(fechaD)
         fechahoy = datetime.datetime(2020,horario.tm_mon,horario.tm_mday)
-        print(fechahoy)
+        #print(fechahoy)
         try:
             print( fechaD-fechahoy )
             if(fechaD-fechahoy== datetime.timedelta(days=5) and horario.tm_hour==12 and horario.tm_min==0):
